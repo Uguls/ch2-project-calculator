@@ -47,7 +47,7 @@ public class Main {
 
             System.out.println("연산 결과는 " + answer + "입니다.");
             System.out.println("계산기를 종료하시겠습니까?(종료하시기를 원하시면 \"exit\"를 입력해주세요");
-            String off = sc.next();
+            String off = sc.next().toLowerCase(); // toLowerCase를 사용하여 Exit eXit exIt 등 다양한 exit에 대응하도록 함
             if (off.equals("exit")) {
                 break;
             }

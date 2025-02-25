@@ -34,8 +34,9 @@ public class Calculator {
     public void delResult() {
         if (!resultList.isEmpty()) {
             resultList.remove(0);
+        } else {
+            System.out.println("계산 결과가 저장되어 있지 않습니다.");
         }
-        System.out.println("계산 결과가 저장되어 있지 않습니다.");
     }
 
     // Getter, Setter
