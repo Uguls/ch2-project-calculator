@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -41,7 +43,10 @@ public class Main {
                 continue;
             }
 
-            System.out.println("연산 결과는 " + result + "입니다.");
+            System.out.println("계산 결과는 " + result + "입니다.");
+            List<String> resultList = new ArrayList<>();
+            resultList = cal.getResultList();
+            System.out.println("계산 기록 : " + resultList);
 
             System.out.println("가장 먼저 계산한 결과를 삭제하시겠습니까? (yes 입력 시 삭제)");
             String delete = sc.next().toLowerCase(); // toLowerCase를 사용하여 대문자가 들어가더라도 정상적으로 작동하도록 사용

@@ -33,8 +33,7 @@ public class Calculator {
 
     public void delResult() {
         if (!resultList.isEmpty()) {
-            System.out.println(resultList.size());
-//            resultList.remove(resultList.size());
+            resultList.remove(resultList.size() - 1);
         } else {
             System.out.println("계산 결과가 저장되어 있지 않습니다.");
         }
