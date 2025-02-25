@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        Calculator cal = new Calculator();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -27,22 +28,17 @@ public class Main {
                 continue;
             }
 
-            /**
-             * 나눗셈의 경우에만 double타입을 사용하기 때문에
-             * 정답을 출력하는 String 타입의 answer를 따로 선언한 후
-             * int, double을 String타입으로 변환하여 answer에 저장
-             */
             if (symbol.equals("+")) {
-                result = first + second;
+                result = cal.add(first, second);
                 answer = Integer.toString(result);
             } else if (symbol.equals("-")) {
-                result = first - second;
+                result = cal.sub(first, second);
                 answer = Integer.toString(result);
             } else if (symbol.equals("*")) {
-                result = first * second;
+                result = cal.mul(first, second);
                 answer = Integer.toString(result);
             } else if (symbol.equals("/")) {
-                double result2 = (double) first / second; // double형으로 하지 않으면 몫만 나오기 때문에 double로 변형
+                double result2 = cal.div(first, second); // double형으로 하지 않으면 몫만 나오기 때문에 double로 변형
                 answer = Double.toString(result2);
             } else {
                 System.out.println("잘못된 연산 기호 입니다. 다시 입력해 주세요");
@@ -50,7 +46,6 @@ public class Main {
             }
 
             System.out.println("연산 결과는 " + answer + "입니다.");
-
             System.out.println("계산기를 종료하시겠습니까?(종료하시기를 원하시면 \"exit\"를 입력해주세요");
             String off = sc.next();
             if (off.equals("exit")) {
