@@ -1,11 +1,15 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+
     public static void main(String[] args) {
         ArithmeticCalculator cal = new ArithmeticCalculator();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
+            OperatorType type = null;
             double result = 0;
 
             System.out.print("첫 번째 숫자를 입력해 주세요(양의 정수(0포함)): ");
@@ -27,23 +31,41 @@ public class Main {
                 continue;
             }
 
-            if (symbol.equals("+")) {
-                result = cal.add(first, second);
-            } else if (symbol.equals("-")) {
-                result = cal.sub(first, second);
-            } else if (symbol.equals("*")) {
-                result = cal.mul(first, second);
-            } else if (symbol.equals("/")) {
-                result = cal.div(first, second); // double형으로 하지 않으면 몫만 나오기 때문에 double로 변형
-            } else {
-                System.out.println("잘못된 연산 기호 입니다. 다시 입력해 주세요");
-                continue;
+            switch (symbol) {
+                case "+" :
+                    type = OperatorType.ADD;
+                    break;
+                case "-" :
+                    type = OperatorType.SUB;
+                    break;
+                case "x" :
+                    type = OperatorType.MUL;
+                    break;
+                case "/" :
+                    type = OperatorType.DIV;
+                    break;
+                default:
+                    System.out.println("잘못된 연산 기호 입니다. 다시 입력해 주세요");
+                    continue;
             }
 
-            System.out.println("연산 결과는 " + result + "입니다.");
-            System.out.println("계산기를 종료하시겠습니까?(종료하시기를 원하시면 \"exit\"를 입력해주세요");
+            result = cal.arithmeticCalculator(type, first, second);
+
+            // 계산 결과 및 저장된 계산 기록 출력
+            System.out.println("계산 결과는 " + result + "입니다.");
+            System.out.println("계산 기록 : " + cal.getResultList());
+            
+            // 가장 오래된 기록 삭제
+            System.out.println("가장 오래된 기록을 삭제하시겠습니까? (삭제를 원하시면 yes를 입력해주세요)");
+            String delete = sc.next();
+            if (delete.equals("yes")) {
+                cal.delResult();
+            }
+            
+            // 계산기 종료
+            System.out.println("계산기를 종료하시겠습니까?(종료를 원하시면 yes를 입력해주세요)");
             String off = sc.next().toLowerCase(); // toLowerCase를 사용하여 Exit eXit exIt 등 다양한 exit에 대응하도록 함
-            if (off.equals("exit")) {
+            if (off.equals("yes")) {
                 break;
             }
 

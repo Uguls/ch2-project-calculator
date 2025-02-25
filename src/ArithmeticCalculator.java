@@ -5,31 +5,30 @@ enum OperatorType {
     ADD,
     SUB,
     MUL,
-    DIV
+    DIV;
 }
 
 public class ArithmeticCalculator  {
     private double result;
 
-    private List<String> resultList = new ArrayList<>();
+    private List<Double> resultList = new ArrayList<>();
 
-    public double add(int x, int y) {
-        result = x + y;
-        return result;
-    }
-
-    public double sub (int x, int y) {
-        result = x - y;
-        return result;
-    }
-
-    public double mul(int x, int y) {
-        result = x * y;
-        return result;
-    }
-
-    public double div(int x, int y) {
-        result = (double) x / y;
+    public double arithmeticCalculator(OperatorType operatorType, double x, double y) {
+        switch (operatorType) {
+            case ADD:
+                result = x + y;
+                break;
+            case SUB:
+                result = x - y;
+                break;
+            case MUL:
+                result = x * y;
+                break;
+            case DIV:
+                result = x / y;
+                break;
+        }
+        resultList.add(result);
         return result;
     }
 
@@ -42,11 +41,11 @@ public class ArithmeticCalculator  {
     }
 
     // Getter, Setter
-    public List<String> getResultList() {
+    public List<Double> getResultList() {
         return resultList;
     }
 
-    public void setResultList(List<String> resultList) {
+    public void setResultList(List<Double> resultList) {
         this.resultList = resultList;
     }
 
