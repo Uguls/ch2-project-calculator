@@ -26,11 +26,6 @@ public class Main {
                 continue;
             }
 
-            /**
-             * 나눗셈의 경우에만 double타입을 사용하기 때문에
-             * 정답을 출력하는 String 타입의 answer를 따로 선언한 후
-             * int, double을 String타입으로 변환하여 answer에 저장
-             */
             if (symbol.equals("+")) {
                 result = first + second;
             } else if (symbol.equals("-")) {
