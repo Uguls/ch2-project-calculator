@@ -5,8 +5,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            int result = 0;
-            String answer = "";
+            double result = 0;
 
             System.out.print("첫 번째 숫자를 입력해 주세요(양의 정수(0포함)): ");
             int first = sc.nextInt();
@@ -34,22 +33,18 @@ public class Main {
              */
             if (symbol.equals("+")) {
                 result = first + second;
-                answer = Integer.toString(result);
             } else if (symbol.equals("-")) {
                 result = first - second;
-                answer = Integer.toString(result);
             } else if (symbol.equals("*")) {
                 result = first * second;
-                answer = Integer.toString(result);
             } else if (symbol.equals("/")) {
-                double result2 = (double) first / second; // double형으로 하지 않으면 몫만 나오기 때문에 double로 변형
-                answer = Double.toString(result2);
+                result = (double) first / second; // double형으로 하지 않으면 몫만 나오기 때문에 double로 변형
             } else {
                 System.out.println("잘못된 연산 기호 입니다. 다시 입력해 주세요");
                 continue;
             }
 
-            System.out.println("연산 결과는 " + answer + "입니다.");
+            System.out.println("연산 결과는 " + result + "입니다.");
 
             System.out.println("계산기를 종료하시겠습니까?(종료하시기를 원하시면 \"exit\"를 입력해주세요");
             String off = sc.next();
