@@ -6,8 +6,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            int result = 0;
-            String answer = "";
+            double result = 0;
 
             System.out.print("첫 번째 숫자를 입력해 주세요(양의 정수(0포함)): ");
             int first = sc.nextInt();
@@ -30,22 +29,18 @@ public class Main {
 
             if (symbol.equals("+")) {
                 result = cal.add(first, second);
-                answer = Integer.toString(result);
             } else if (symbol.equals("-")) {
                 result = cal.sub(first, second);
-                answer = Integer.toString(result);
             } else if (symbol.equals("*")) {
                 result = cal.mul(first, second);
-                answer = Integer.toString(result);
             } else if (symbol.equals("/")) {
-                double result2 = cal.div(first, second); // double형으로 하지 않으면 몫만 나오기 때문에 double로 변형
-                answer = Double.toString(result2);
+                result = cal.div(first, second); // double형으로 하지 않으면 몫만 나오기 때문에 double로 변형
             } else {
                 System.out.println("잘못된 연산 기호 입니다. 다시 입력해 주세요");
                 continue;
             }
 
-            System.out.println("연산 결과는 " + answer + "입니다.");
+            System.out.println("연산 결과는 " + result + "입니다.");
             System.out.println("계산기를 종료하시겠습니까?(종료하시기를 원하시면 \"exit\"를 입력해주세요");
             String off = sc.next().toLowerCase(); // toLowerCase를 사용하여 Exit eXit exIt 등 다양한 exit에 대응하도록 함
             if (off.equals("exit")) {
