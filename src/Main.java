@@ -6,9 +6,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            int result = 0;
-            String answer = "";
-
+            double result = 0; // 나눗셈을 할 때 소숫점 까지 나타내기 위해 double 사용
+            
             System.out.print("첫 번째 숫자를 입력해 주세요(양의 정수(0포함)): ");
             int first = sc.nextInt();
             if (first < 0) {
@@ -28,27 +27,24 @@ public class Main {
                 continue;
             }
 
+            // 입력한 연산기호에 따라 Calculator의 메서드 사용
             if (symbol.equals("+")) {
                 result = cal.add(first, second);
-                answer = Integer.toString(result);
             } else if (symbol.equals("-")) {
                 result = cal.sub(first, second);
-                answer = Integer.toString(result);
-            } else if (symbol.equals("*")) {
+            } else if (symbol.equals("x")) {
                 result = cal.mul(first, second);
-                answer = Integer.toString(result);
             } else if (symbol.equals("/")) {
-                double result2 = cal.div(first, second); // double형으로 하지 않으면 몫만 나오기 때문에 double로 변형
-                answer = Double.toString(result2);
+                result = cal.div(first, second);
             } else {
                 System.out.println("잘못된 연산 기호 입니다. 다시 입력해 주세요");
                 continue;
             }
 
-            System.out.println("연산 결과는 " + answer + "입니다.");
+            System.out.println("연산 결과는 " + result + "입니다.");
 
-            System.out.println("계산 결과를 삭제하시겠습니까? (yes 입력 시 삭제)");
-            String delete = sc.next().toLowerCase();
+            System.out.println("가장 먼저 계산한 결과를 삭제하시겠습니까? (yes 입력 시 삭제)");
+            String delete = sc.next().toLowerCase(); // toLowerCase를 사용하여 대문자가 들어가더라도 정상적으로 작동하도록 사용
             if (delete.equals("yes")) {
                 cal.delResult();
             }
