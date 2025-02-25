@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Calculator cal = new Calculator();
+        ArithmeticCalculator cal = new ArithmeticCalculator();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
