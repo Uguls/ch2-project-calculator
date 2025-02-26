@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 enum OperatorType {
     ADD,
@@ -8,24 +10,24 @@ enum OperatorType {
     DIV;
 }
 
-public class ArithmeticCalculator  {
-    private double result;
+public class ArithmeticCalculator<T extends Number>  {
+    private Double result;
 
     private List<Double> resultList = new ArrayList<>();
 
-    public double arithmeticCalculator(OperatorType operatorType, double x, double y) {
+    public Double calculate(OperatorType operatorType, T x, T y) {
         switch (operatorType) {
             case ADD:
-                result = x + y;
+                result = x.doubleValue() + y.doubleValue();
                 break;
             case SUB:
-                result = x - y;
+                result = x.doubleValue() - y.doubleValue();
                 break;
             case MUL:
-                result = x * y;
+                result = x.doubleValue() * y.doubleValue();
                 break;
             case DIV:
-                result = x / y;
+                result = x.doubleValue() / y.doubleValue();
                 break;
         }
         resultList.add(result);
@@ -38,6 +40,15 @@ public class ArithmeticCalculator  {
         } else {
             System.out.println("계산 결과가 저장되어 있지 않습니다.");
         }
+    }
+
+    // 스트림을 사용하여 입력받은 수보다 큰 숫자목록 뽑기
+    // .filter를 통해 num보다 큰 수를 뽑은 후
+    // .toList를 통해 List로 뽑기
+    public List<Double> getBiggerList(Number num) {
+        return resultList.stream()
+                .filter(v -> v > num.doubleValue())
+                .toList();
     }
 
     // Getter, Setter

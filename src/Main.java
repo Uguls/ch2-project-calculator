@@ -1,11 +1,11 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class Main {
 
     public static void main(String[] args) {
-        ArithmeticCalculator cal = new ArithmeticCalculator();
+        ArithmeticCalculator<Double> cal = new ArithmeticCalculator();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -13,13 +13,15 @@ public class Main {
             double result = 0;
 
             System.out.print("첫 번째 숫자를 입력해 주세요(양의 정수(0포함)): ");
-            int first = sc.nextInt();
+            double first = sc.nextDouble();
+//            int first2 = sc.nextInt();
+
             if (first < 0) {
                 System.out.println("양의 정수를 입력해 주세요");
                 continue;
             }
             System.out.print("두 번째 숫자를 입력해 주세요(양의 정수(0포함)): ");
-            int second = sc.nextInt();
+            double second = sc.nextDouble();
             if (second < 0) {
                 System.out.println("양의 정수를 입력해 주세요");
                 continue;
@@ -49,7 +51,7 @@ public class Main {
                     continue;
             }
 
-            result = cal.arithmeticCalculator(type, first, second);
+            result = cal.calculate(type, first, second);
 
             // 계산 결과 및 저장된 계산 기록 출력
             System.out.println("계산 결과는 " + result + "입니다.");
@@ -61,11 +63,16 @@ public class Main {
             if (delete.equals("yes")) {
                 cal.delResult();
             }
-            
+
+            System.out.println("저장된 연산 결과들 중 입력받은 값보다 큰 결과값 들 출력하기(확인할 값을 입력해주세요) : ");
+            double num = sc.nextDouble();
+            List<Double> biggerList = cal.getBiggerList(num);
+            System.out.println(biggerList);
+
             // 계산기 종료
             System.out.println("계산기를 종료하시겠습니까?(종료를 원하시면 yes를 입력해주세요)");
             String off = sc.next().toLowerCase(); // toLowerCase를 사용하여 Exit eXit exIt 등 다양한 exit에 대응하도록 함
-            if (off.equals("yes")) {
+            if ("yes".equals(off)) {
                 break;
             }
 
