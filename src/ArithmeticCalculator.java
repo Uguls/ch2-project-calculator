@@ -51,6 +51,12 @@ public class ArithmeticCalculator<T extends Number>  {
                 .toList();
     }
 
+    // 계산횟수 구하기
+    public double getCount() {
+        return resultList.stream()
+                .count();
+    }
+
     // Getter, Setter
     public List<Double> getResultList() {
         return resultList;
