@@ -18,14 +18,14 @@ enum OperatorType {
         this.biFunction = biFunction;
     }
 
-    public Double calculate(double x, double y) {
-        return biFunction.apply(x, y);
-    }
-
     public String getOperator() {
         return operator;
     }
 
+    // BiFunction의 apply 메서드를 사용하여 덧셈진행
+    public Double calculate(double x, double y) {
+        return biFunction.apply(x, y);
+    }
 }
 
 public class ArithmeticCalculator<T extends Number>  {
@@ -34,20 +34,7 @@ public class ArithmeticCalculator<T extends Number>  {
     private List<Double> resultList = new ArrayList<>();
 
     public Double calculate(OperatorType operatorType, T x, T y) {
-        switch (operatorType) {
-            case ADD:
-                result = x.doubleValue() + y.doubleValue();
-                break;
-            case SUB:
-                result = x.doubleValue() - y.doubleValue();
-                break;
-            case MUL:
-                result = x.doubleValue() * y.doubleValue();
-                break;
-            case DIV:
-                result = x.doubleValue() / y.doubleValue();
-                break;
-        }
+        result = operatorType.calculate(x.doubleValue(), y.doubleValue());
         resultList.add(result);
         return result;
     }
