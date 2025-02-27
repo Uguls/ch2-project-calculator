@@ -1,13 +1,31 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 enum OperatorType {
-    ADD,
-    SUB,
-    MUL,
-    DIV;
+    ADD("+", (x, y) -> x + y),
+    SUB("-", (x, y) -> x - y),
+    MUL("x", (x, y) -> x * y),
+    DIV("/", (x, y) -> x / y);
+
+    private final BiFunction<Double, Double, Double> biFunction;
+    private String operator;
+
+    OperatorType(String operator, BiFunction<Double, Double, Double> biFunction) {
+        this.operator = operator;
+        this.biFunction = biFunction;
+    }
+
+    public Double calculate(double x, double y) {
+        return biFunction.apply(x, y);
+    }
+
+    public String getOperator() {
+        return operator;
+    }
+
 }
 
 public class ArithmeticCalculator<T extends Number>  {

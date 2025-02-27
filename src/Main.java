@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -6,6 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         ArithmeticCalculator<Double> cal = new ArithmeticCalculator();
+
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -27,7 +29,6 @@ public class Main {
                     System.out.println("잘못된 입력입니다. 숫자를 입력해주세요");
                     sc.nextLine();
                 }
-
             }
 
             while (true) {
@@ -44,7 +45,6 @@ public class Main {
                     System.out.println("잘못된 입력입니다. 숫자를 입력해주세요");
                     sc.nextLine();
                 }
-
             }
 
             while (true){
