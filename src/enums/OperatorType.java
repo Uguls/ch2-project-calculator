@@ -1,3 +1,5 @@
+package enums;
+
 import java.util.function.BiFunction;
 
 public enum OperatorType {

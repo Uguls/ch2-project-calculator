@@ -1,9 +1,10 @@
+package service;
+
+import enums.OperatorType;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class ArithmeticCalculator<T extends Number>  {
     private String result;
