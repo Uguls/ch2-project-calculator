@@ -28,11 +28,15 @@ public enum OperatorType {
         return operator;
     }
 
-    /*
+    /**
     BiFunction의 apply 메서드를 사용하여 연산 진행
     apply메서드는 인자 두 개를 받아서 하나의 값을 반환함
-     */
+     **/
     public Double calculate(double x, double y) {
         return biFunction.apply(x, y);
     }
+
+    // TODO: 공학용계산기 만들어보기
+    //  - 계산기 버전 나눠보기 (일반, 공학용)
+
 }
