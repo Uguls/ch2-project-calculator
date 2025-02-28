@@ -1,41 +1,19 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-enum OperatorType {
-    ADD("+", (x, y) -> x + y),
-    SUB("-", (x, y) -> x - y),
-    MUL("x", (x, y) -> x * y),
-    DIV("/", (x, y) -> x / y);
-
-    private final BiFunction<Double, Double, Double> biFunction;
-    private String operator;
-
-    OperatorType(String operator, BiFunction<Double, Double, Double> biFunction) {
-        this.operator = operator;
-        this.biFunction = biFunction;
-    }
-
-    public String getOperator() {
-        return operator;
-    }
-
-    // BiFunction의 apply 메서드를 사용하여 덧셈진행
-    public Double calculate(double x, double y) {
-        return biFunction.apply(x, y);
-    }
-}
-
 public class ArithmeticCalculator<T extends Number>  {
-    private Double result;
+    private String result;
 
     private List<Double> resultList = new ArrayList<>();
 
-    public Double calculate(OperatorType operatorType, T x, T y) {
-        result = operatorType.calculate(x.doubleValue(), y.doubleValue());
-        resultList.add(result);
+    public String calculate(OperatorType operatorType, T x, T y) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.###");
+        result = decimalFormat.format(operatorType.calculate(x.doubleValue(), y.doubleValue())); // Double타입으로 반환되는 결과값을 String으로 변환 및 소수점 제한
+        resultList.add(Double.parseDouble(result)); // String타입으로 된 reulst를 Double타입으로 변환하여 리스트에 저장
         return result;
     }
 
@@ -67,8 +45,12 @@ public class ArithmeticCalculator<T extends Number>  {
         return resultList;
     }
 
+    // 마지막 계산 결과 가져오기
+    public Double getLastResult() {
+        return Double.valueOf(result);
+    }
+
     public void setResultList(List<Double> resultList) {
         this.resultList = resultList;
     }
-
 }
