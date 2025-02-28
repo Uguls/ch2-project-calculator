@@ -1,8 +1,7 @@
 import dto.CalculatorDTO;
-import enums.OperatorType;
-import service.ArithmeticCalculator;
-import service.InputHandler;
-import service.OutputHandler;
+import service.impl.ArithmeticCalculatorImpl;
+import service.impl.InputHandlerImpl;
+import service.impl.OutputHandlerImpl;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -11,24 +10,23 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        ArithmeticCalculator<Double> cal = new ArithmeticCalculator();
-        InputHandler inputHandler = new InputHandler(cal);
-        OutputHandler outputHandler = new OutputHandler();
+        ArithmeticCalculatorImpl<Double> cal = new ArithmeticCalculatorImpl();
+        InputHandlerImpl inputHandlerImpl = new InputHandlerImpl(cal);
+        OutputHandlerImpl outputHandlerImpl = new OutputHandlerImpl();
         CalculatorDTO calculatorDTO = new CalculatorDTO();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
-            inputHandler.getFirstNumber(calculatorDTO);
-            inputHandler.getOperator(calculatorDTO);
-            inputHandler.getSecondNumber(calculatorDTO);
+            inputHandlerImpl.getFirstNumber(calculatorDTO);
+            inputHandlerImpl.getOperator(calculatorDTO);
+            inputHandlerImpl.getSecondNumber(calculatorDTO);
 
             // 연산자, 첫번째 숫자, 두번째 숫자를 계산하기 위해 calculate메서드 실행 후 result에 저장
             String result = cal.calculate(calculatorDTO.getType(), calculatorDTO.getFirstNumber(),  calculatorDTO.getSecondNumber());
 
-            // TODO 아웃풋 클래스로 묵어서 하기
-            outputHandler.printResult(result, cal.getCount(), cal.getResultList());
+            outputHandlerImpl.printResult(result, cal.getCount(), cal.getResultList());
             // 사용자가 원하는 기능 실행하기
-            String userChoice = outputHandler.getUserChoice();
+            String userChoice = outputHandlerImpl.getUserChoice();
 
             switch (userChoice) {
 

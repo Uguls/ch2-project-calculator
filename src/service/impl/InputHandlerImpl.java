@@ -1,19 +1,21 @@
-package service;
+package service.impl;
 
 import dto.CalculatorDTO;
 import enums.OperatorType;
+import service.interfaces.InputHandler;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class InputHandler {
+public class InputHandlerImpl implements InputHandler {
     private final Scanner sc = new Scanner(System.in);
-    private final ArithmeticCalculator cal; // 내부에서 직접 cal객체를 생성하면 매번 다른 객체가 생성되기 떄문에 main에서 생성하여 주입
+    private final ArithmeticCalculatorImpl cal; // 내부에서 직접 cal객체를 생성하면 매번 다른 객체가 생성되기 떄문에 main에서 생성하여 주입
 
-    public InputHandler(ArithmeticCalculator calculator) {
+    public InputHandlerImpl(ArithmeticCalculatorImpl calculator) {
         this.cal = calculator;
     }
 
+    @Override
     public void getFirstNumber(CalculatorDTO calculatorDTO) {
 
         while (true) {
@@ -43,6 +45,7 @@ public class InputHandler {
         }
     }
 
+    @Override
     public void getSecondNumber(CalculatorDTO calculatorDTO) {
         while (true) {
             try {
@@ -69,6 +72,7 @@ public class InputHandler {
 
     }
 
+    @Override
     public void getOperator(CalculatorDTO calculatorDTO) {
         // 연사자 입력 받기
         boolean isOperatorWrong = true; // isOperatorWrong변수를 통해 while문 통제
