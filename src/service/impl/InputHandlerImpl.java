@@ -2,6 +2,7 @@ package service.impl;
 
 import dto.CalculatorDTO;
 import enums.OperatorType;
+import service.interfaces.ArithmeticCalculator;
 import service.interfaces.InputHandler;
 
 import java.util.InputMismatchException;
@@ -9,9 +10,9 @@ import java.util.Scanner;
 
 public class InputHandlerImpl implements InputHandler {
     private final Scanner sc = new Scanner(System.in);
-    private final ArithmeticCalculatorImpl cal; // 내부에서 직접 cal객체를 생성하면 매번 다른 객체가 생성되기 떄문에 main에서 생성하여 주입
+    private final ArithmeticCalculator cal; // 내부에서 직접 cal객체를 생성하면 매번 다른 객체가 생성되기 떄문에 main에서 생성하여 주입
 
-    public InputHandlerImpl(ArithmeticCalculatorImpl calculator) {
+    public InputHandlerImpl(ArithmeticCalculator calculator) {
         this.cal = calculator;
     }
 

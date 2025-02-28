@@ -16,7 +16,7 @@ public class Main {
         // 계산을 하는 객체
         ArithmeticCalculator<Double> cal = new ArithmeticCalculatorImpl();
         // 입력을 담당하는 객체
-        InputHandler inputHandler = new InputHandlerImpl((ArithmeticCalculatorImpl) cal);
+        InputHandler inputHandler = new InputHandlerImpl(cal);
         // 출력을 담당하는 객체
         OutputHandler outputHandler = new OutputHandlerImpl();
         // 변수를 담당하는 객체

@@ -3,6 +3,7 @@ package service.impl;
 import enums.OperatorType;
 import service.interfaces.ArithmeticCalculator;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class ArithmeticCalculatorImpl<T extends Number> implements ArithmeticCal
     @Override
     public String calculate(OperatorType operatorType, Number x, Number y) {
         DecimalFormat decimalFormat = new DecimalFormat("#.###");
+        decimalFormat.setRoundingMode(RoundingMode.FLOOR);
         result = decimalFormat.format(operatorType.calculate(x.doubleValue(), y.doubleValue())); // Double타입으로 반환되는 결과값을 String으로 변환 및 소수점 제한
         resultList.add(Double.parseDouble(result)); // String타입으로 된 reulst를 Double타입으로 변환하여 리스트에 저장
         return result;
