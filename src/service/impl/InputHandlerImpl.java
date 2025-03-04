@@ -26,6 +26,7 @@ public class InputHandlerImpl implements InputHandler {
 
                 if (cal.getCount() > 0 && "ans".equals(firstInput.toLowerCase())) {
                     calculatorDTO.setFirstNumber(cal.getLastResult());
+
                     System.out.println("이전 계산 결과 : " + calculatorDTO.getFirstNumber());
                     break;
                 }
