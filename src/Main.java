@@ -45,8 +45,11 @@ public class Main {
                 // 저장된 연산 결과들 중 입력받은 값보다 큰 결과값 들 출력하기
                 case "2" : calculatorFunc.getBiggerList();
                     break;
+                // 결과값 리스트 초기화 하기
+                case "3": calculatorFunc.clearResultList();
+                    break;
                 // 계산기 종료
-                case "3" : calculatorFunc.exitCalculator();
+                case "4" : calculatorFunc.exitCalculator();
                     break;
             }
         }

@@ -59,6 +59,7 @@ public class ArithmeticCalculatorImpl<T extends Number> implements ArithmeticCal
         return Double.valueOf(result);
     }
 
+    @Override
     public void setResultList(List<Double> resultList) {
         this.resultList = resultList;
     }

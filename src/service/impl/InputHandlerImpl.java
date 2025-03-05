@@ -78,14 +78,12 @@ public class InputHandlerImpl implements InputHandler {
     public void getOperator(CalculatorDTO calculatorDTO) {
         // 연사자 입력 받기
         boolean isOperatorWrong = true; // isOperatorWrong변수를 통해 while문 통제
-        while (isOperatorWrong){
+        while (isOperatorWrong) {
             System.out.print("연산 기호를 입력해 주세요(+,-,x(*),/, ^): ");
             String operator = sc.next();
             calculatorDTO.setOperator(operator);
 
-            // TODO 스트림으로 변경하기
             for (OperatorType op : OperatorType.values()) {
-
                 // ENUM 클래스에 저장된 연산자들과 입력받은 연산자 비교
                 if (op.getOperator().equals(calculatorDTO.getOperator())) { // symbol이 null일 가능성이 존재함으로 op와 비교
                     calculatorDTO.setType(op);
@@ -93,7 +91,7 @@ public class InputHandlerImpl implements InputHandler {
                     return; // 입력받은 연산자가 enum으로 관리하는 연산자중에 있다면 탈출
                 }
             }
-            
+
             // for문을 돌며 ENUM 클래스에 저장된 연산자들 중 입력받은 연산자가 있는지 확인 후 없다면 다시입력요청문구 출력
             if (isOperatorWrong = true) {
                 System.out.println("잘못된 연산 기호 입니다. 다시 입력해 주세요");

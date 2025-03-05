@@ -3,6 +3,8 @@ package service.impl;
 import service.interfaces.ArithmeticCalculator;
 import service.interfaces.CalculatorFunc;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
@@ -41,5 +43,10 @@ public class CalculatorFuncImpl implements CalculatorFunc {
             System.out.println("계산기가 종료되었습니다.");
             System.exit(0);
         }
+    }
+
+    @Override
+    public void clearResultList() {
+        cal.setResultList(new ArrayList<>());
     }
 }

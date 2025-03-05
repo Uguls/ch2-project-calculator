@@ -16,4 +16,6 @@ public interface ArithmeticCalculator<T extends Number> {
     List<Double> getResultList();
 
     Double getLastResult();
+
+    void setResultList(List<Double> resultList);
 }

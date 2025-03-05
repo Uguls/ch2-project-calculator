@@ -21,7 +21,8 @@ public class OutputHandlerImpl implements OutputHandler {
     public String getUserChoice() {
         System.out.println("1. 가장 오래된 기록 삭제\n" +
                 "2. 저장된 연산 결과들 중 입력받은 값보다 큰 결과값들 출력하기\n" +
-                "3. 종료하기\n" +
+                "3. 결과값 목록 초기화 하기" +
+                "4. 종료하기\n" +
                 "(계속하기를 원하시면 아무거나 입력해주세요)");
         String lastInput = sc.next();
         return lastInput;

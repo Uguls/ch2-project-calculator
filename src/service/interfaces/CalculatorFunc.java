@@ -8,4 +8,6 @@ public interface CalculatorFunc {
     void getBiggerList();
 
     void exitCalculator();
+
+    void clearResultList();
 }
