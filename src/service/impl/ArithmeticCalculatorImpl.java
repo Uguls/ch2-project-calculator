@@ -10,7 +10,6 @@ import java.util.List;
 
 public class ArithmeticCalculatorImpl<T extends Number> implements ArithmeticCalculator<T> {
     private String result;
-
     private List<Double> resultList = new ArrayList<>();
 
     @Override

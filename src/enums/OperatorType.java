@@ -35,8 +35,4 @@ public enum OperatorType {
     public Double calculate(double x, double y) {
         return biFunction.apply(x, y);
     }
-
-    // TODO: 공학용계산기 만들어보기
-    //  - 계산기 버전 나눠보기 (일반, 공학용)
-
 }
